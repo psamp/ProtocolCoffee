@@ -22,11 +22,8 @@
 }
 
 -(void)makeEspresso {
-    BOOL respondsToMachineWaterBeingHot = [self.delegate respondsToSelector:@selector(expressoMachineWaterHasBecomeHot:)];
     
-    if(respondsToMachineWaterBeingHot) {
-        [self.delegate expressoMachineWaterHasBecomeHot:self];
-    }
+    [self.delegate prepareEspresso:self];
     
     if(self.hasBeans && self.waterIsHot) {
         [self.delegate espressoMachineDidFinishMakingEspresso:self];
@@ -34,17 +31,20 @@
 }
 
 -(void)addWater {
-    _hasWater = YES;
+    NSLog(@"Adding water...");
+    self.hasWater = YES;
 }
 
 -(void)heatWater {
-    if(_hasWater) {
-        _waterIsHot = YES;
+    if(self.hasWater) {
+        NSLog(@"Water is getting hot...");
+        self.waterIsHot = YES;
     }
 }
 
 -(void)addBeans {
-    _hasBeans = YES;
+    NSLog(@"Adding beans...");
+    self.hasBeans = YES;
 }
 
 @end

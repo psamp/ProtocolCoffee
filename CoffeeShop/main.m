@@ -16,11 +16,6 @@ int main(int argc, const char * argv[]) {
         Barista *kellyannMarie = [[Barista alloc] init];
         
         [machine setDelegate:kellyannMarie];
-        
-        [machine addBeans];
-        [machine addWater];
-        [machine heatWater];
-        
         [machine makeEspresso];
     }
     return 0;

@@ -12,9 +12,9 @@
 
 @interface EspressoMachine : NSObject
 
-@property(nonatomic, readonly) BOOL hasWater;
-@property(nonatomic, readonly) BOOL hasBeans;
-@property(nonatomic, readonly) BOOL waterIsHot;
+@property(nonatomic, readwrite) BOOL hasWater;
+@property(nonatomic, readwrite) BOOL hasBeans;
+@property(nonatomic, readwrite) BOOL waterIsHot;
 @property(nonatomic,readwrite, weak) id<EspressoMachineDelegate> delegate;
 
 - (void)makeEspresso;
@@ -26,6 +26,7 @@
 
 @protocol EspressoMachineDelegate <NSObject>
 
+- (void)prepareEspresso:(EspressoMachine *)espressoMachine;
 - (void)espressoMachineDidFinishMakingEspresso:(EspressoMachine *)espressoMachine;
 
 @optional

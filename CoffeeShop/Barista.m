@@ -11,11 +11,18 @@
 
 @implementation Barista
 
+-(void)prepareEspresso:(EspressoMachine *)espressoMachine {
+    [espressoMachine addBeans];
+    [espressoMachine addWater];
+    [espressoMachine heatWater];
+}
+
 -(void)espressoMachineDidFinishMakingEspresso:(EspressoMachine *)espressoMachine {
-        NSLog(@"Here is your espresso! Thank you and have a nice day!");
+    NSLog(@"Here is your espresso! Thank you and have a nice day!");
 }
 
 -(void)expressoMachineWaterHasBecomeHot:(EspressoMachine *)espressoMachine {
+    
     if(espressoMachine.waterIsHot){
         NSLog(@"The machine's water is hot now!");
     } else {
