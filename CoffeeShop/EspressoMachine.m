@@ -37,8 +37,13 @@
 
 -(void)heatWater {
     if(self.hasWater) {
-        NSLog(@"Water is getting hot...");
         self.waterIsHot = YES;
+    }
+    
+    BOOL canSendMessageExpressoMachineWaterHasBecomeHot = [self.delegate respondsToSelector:@selector(expressoMachineWaterHasBecomeHot:)];
+    
+    if (canSendMessageExpressoMachineWaterHasBecomeHot) {
+        [self.delegate expressoMachineWaterHasBecomeHot:self];
     }
 }
 
